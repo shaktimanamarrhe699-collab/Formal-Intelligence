@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formal Intelligence AI</title>
+
+<style>
+body{
+background:#0f172a;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+#chat{
+width:400px;
+margin:20px auto;
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+height:300px;
+overflow-y:auto;
+}
+
+input{
+width:60%;
+padding:8px;
+border-radius:5px;
+border:none;
+}
+
+button{
+padding:8px 12px;
+background:#22c55e;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#16a34a;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Formal Intelligence</h1>
+<p>Simple AI Chatbot</p>
+
+<div id="chat"></div>
+
+<input id="msg" placeholder="Ask something...">
+<button onclick="send()">Send</button>
+
+<script>
+function send(){
+
+let userText = document.getElementById("msg").value;
+let chat = document.getElementById("chat");
+
+if(userText === "") return;
+
+chat.innerHTML += "<p><b>You:</b> " + userText + "</p>";
+
+let reply = "I am still learning.";
+
+if(userText.toLowerCase().includes("hello")){
+reply = "Hello! Nice to meet you.";
+}
+
+else if(userText.toLowerCase().includes("ai")){
+reply = "AI means Artificial Intelligence.";
+}
+
+else if(userText.toLowerCase().includes("game")){
+reply = "Games are awesome 🎮";
+}
+
+chat.innerHTML += "<p><b>AI:</b> " + reply + "</p>";
+
+document.getElementById("msg").value="";
+chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
