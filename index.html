@@ -1,88 +1,129 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Formal Intelligence AI</title>
+<title>Formal Intelligence</title>
 
 <style>
+
 body{
 background:#0f172a;
-color:white;
 font-family:Arial;
-text-align:center;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+color:white;
 }
 
-#chat{
+.chat{
 width:400px;
-margin:20px auto;
 background:#1e293b;
-padding:15px;
+padding:20px;
 border-radius:10px;
+}
+
+#chatbox{
 height:300px;
 overflow-y:auto;
+background:#020617;
+padding:10px;
+border-radius:8px;
+margin-bottom:10px;
+}
+
+.user{
+background:#2563eb;
+padding:8px;
+margin:5px;
+border-radius:6px;
+text-align:right;
+}
+
+.bot{
+background:#334155;
+padding:8px;
+margin:5px;
+border-radius:6px;
 }
 
 input{
-width:60%;
-padding:8px;
-border-radius:5px;
+width:70%;
+padding:10px;
 border:none;
+border-radius:5px;
 }
 
 button{
-padding:8px 12px;
+padding:10px;
 background:#22c55e;
 border:none;
 border-radius:5px;
 cursor:pointer;
 }
 
-button:hover{
-background:#16a34a;
-}
 </style>
 
 </head>
 
+
 <body>
 
-<h1>Formal Intelligence</h1>
-<p>Simple AI Chatbot</p>
+<div class="chat">
 
-<div id="chat"></div>
+<h2>Formal Intelligence</h2>
 
-<input id="msg" placeholder="Ask something...">
+<div id="chatbox"></div>
+
+<input id="msg" placeholder="Type message">
 <button onclick="send()">Send</button>
 
+</div>
+
 <script>
+
 function send(){
 
-let userText = document.getElementById("msg").value;
-let chat = document.getElementById("chat");
+let msg=document.getElementById("msg").value;
 
-if(userText === "") return;
+if(msg==="") return;
 
-chat.innerHTML += "<p><b>You:</b> " + userText + "</p>";
+let chat=document.getElementById("chatbox");
 
-let reply = "I am still learning.";
+chat.innerHTML += "<div class='user'>"+msg+"</div>";
 
-if(userText.toLowerCase().includes("hello")){
-reply = "Hello! Nice to meet you.";
+let reply="I am still learning.";
+
+let text=msg.toLowerCase();
+
+if(text.includes("hello")){
+reply="Hello! Nice to meet you.";
 }
 
-else if(userText.toLowerCase().includes("ai")){
-reply = "AI means Artificial Intelligence.";
+else if(text.includes("ai")){
+reply="AI means Artificial Intelligence.";
 }
 
-else if(userText.toLowerCase().includes("game")){
-reply = "Games are awesome 🎮";
+else if(text.includes("game")){
+reply="Games are fun 🎮";
 }
 
-chat.innerHTML += "<p><b>AI:</b> " + reply + "</p>";
+else if(text.includes("who are you")){
+reply="I am Formal Intelligence chatbot.";
+}
+
+setTimeout(function(){
+chat.innerHTML += "<div class='bot'>"+reply+"</div>";
+chat.scrollTop=chat.scrollHeight;
+},500);
 
 document.getElementById("msg").value="";
-chat.scrollTop = chat.scrollHeight;
+
 }
+
 </script>
 
 </body>
+
 </html>
